@@ -9,20 +9,28 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="title">
-        <h1>Imagens da Nasa tiradas no dia do seu aniversário</h1>
-    </div>
-    <div class="date-text">
-        <span>Insira aqui a data do seu aniversário e lhe mostraremos a sua imagem</span>
-    </div>
-    <div class="date">
-        <input type="text" id="date_mask" />
-        <button type="button">Pesquisar</button>
-    </div>
-    <div class="nasa-image">
-        <img src="{{ data.url }}" alt="image">
+    <div class="content">
+        <div class="title">
+            <h1>Imagens da Nasa tiradas no dia do seu aniversário</h1>
+        </div>
+        <div class="date-text">
+            <span>Insira aqui a data do seu aniversário e lhe mostraremos a sua imagem</span>
+        </div>
+        <div class="date">
+            <input type="text" id="date_mask" />
+            <button type="button" onclick="get_image()">Pesquisar</button>
+        </div>
+        <div class="nasa-image">
+            <img src="{{ data.url }}" alt="image" id="image-input">
+        </div>
+        <div class="nasa-description">
+            <p>{{ data.explanation }}</p>
+        </div>
     </div>
 </body>
 </html>
@@ -31,4 +39,31 @@
     jQuery(function($){
         $('#date_mask').mask("99/99/9999");
     });
+
+    function get_image() {
+        date_user = $("#date_mask").val()
+        if(!date_user) return
+
+        date_format = formatDate(date_user)
+
+        $.ajax({
+            method: "GET",
+            url: "/nasa-image",
+            data: {date: date_format},
+            async: false,
+            datatype: 'JSON',
+            beforeSend: function () { },
+            success: function (response) {
+                $("#image-input").attr("src", response.url);
+                $(".nasa-description").html(`<p>${response.explanation}</p>`)
+            }
+        });
+    }
+
+    function formatDate(inputDate) {
+        const dateParts = inputDate.split("/");
+        const formattedDate = `${dateParts[2]}-${dateParts[1]}-${dateParts[0]}`;
+        
+        return formattedDate;
+      }
 </script>
