@@ -1,0 +1,34 @@
+.title {
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 50px;
+}
+
+.title h1 {
+    margin: 0;
+}
+
+.date {
+    gap: 10px;
+}
+
+.date,
+.date-text {
+    margin-bottom: 30px;
+}
+
+.nasa-image {
+    max-width: 100%;
+}
+
+.nasa-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+.nasa-image,
+.date-text,
+.date {
+    justify-content: center;
+    display: flex;
+}

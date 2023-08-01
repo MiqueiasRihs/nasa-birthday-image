@@ -1,0 +1,5 @@
+fastapi==0.68.1
+uvicorn==0.15.0
+jinja2==3.0.3
+aiofiles==0.8.0
+requests==2.21.0
