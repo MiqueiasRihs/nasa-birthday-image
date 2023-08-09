@@ -1,4 +1,63 @@
 <html>
+
+<style>
+    body {
+        font-family: 'Montserrat', sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .content {
+        width: 50%;
+        margin: 0 auto;
+        text-align: center;
+        padding: 20px;
+    }
+    
+    @media (max-width: 768px){
+        .content {
+            width: auto;
+        }
+      }
+    
+    .title {
+        font-size: 12px;
+        text-align: center;
+        padding: 20px;
+        margin-bottom: 25px;
+    }
+    
+    .title h1 {
+        margin: 0;
+    }
+    
+    .date {
+        gap: 10px;
+    }
+    
+    .date,
+    .date-text {
+        margin-bottom: 20px;
+    }
+    
+    .nasa-image {
+        max-width: 100%;
+    }
+    
+    .nasa-image img {
+        max-width: 100%;
+        height: auto;
+    }
+    
+    .nasa-image,
+    .date-text,
+    .date {
+        justify-content: center;
+        display: flex;
+    }
+    
+</style>
+
 <head>
     <title>Imagens da Nasa</title>
     <link href="{{ url_for('static', path='/styles.css') }}" rel="stylesheet">
