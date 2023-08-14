@@ -5,7 +5,7 @@ load_dotenv()
 
 class NasaAPI:
     def __init__(self):
-        self.api_key = os.getenv("NASA_API_KEY")
+        self.api_key = os.getenv("OB8YqcfYVH6iH21Ch2ZKw64HUPwEsodHI2JW1Fsw")
         self.url =  "https://api.nasa.gov/planetary/apod"
         
     
